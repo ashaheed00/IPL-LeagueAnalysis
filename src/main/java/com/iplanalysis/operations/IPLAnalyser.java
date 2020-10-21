@@ -1,0 +1,28 @@
+package com.iplanalysis.operations;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.iplanalysis.csvclasses.IPLBatting;
+import com.iplanalysis.fileloaders.CsvFileLoader;
+import com.opencsv.builder.CSVException;
+
+public class IPLAnalyser {
+
+	private List<IPLBatting> iplBattingList;
+	private CsvFileLoader csvFileLoader;
+
+	public IPLAnalyser() {
+		csvFileLoader = new CsvFileLoader();
+	}
+
+	public List<IPLBatting> sortByBattingAvgDesc(String csvFilePath) throws CSVException {
+		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
+		return iplBattingList
+				.stream().sorted(Comparator
+						.comparing(batting -> Double.parseDouble(((IPLBatting) batting).getAverage())).reversed())
+				.collect(Collectors.toList());
+	}
+
+}

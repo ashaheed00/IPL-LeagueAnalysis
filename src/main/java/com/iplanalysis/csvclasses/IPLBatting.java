@@ -46,6 +46,14 @@ public class IPLBatting {
 		return strikeRate;
 	}
 
+	public int getFours() {
+		return fours;
+	}
+
+	public int getSixes() {
+		return sixes;
+	}
+
 	@Override
 	public String toString() {
 		return "IPLBatting [position=" + position + ", player=" + player + ", match=" + match + ", innings=" + innings

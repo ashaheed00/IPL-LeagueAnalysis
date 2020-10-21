@@ -31,4 +31,12 @@ public class IPLAnalyser {
 				.collect(Collectors.toList());
 	}
 
+	public List<IPLBatting> sortBySixesDesc(String csvFilePath) throws CSVException {
+		return null;
+	}
+
+	public List<IPLBatting> sortByFoursDesc(String csvFilePath) throws CSVException {
+		return null;
+	}
+
 }

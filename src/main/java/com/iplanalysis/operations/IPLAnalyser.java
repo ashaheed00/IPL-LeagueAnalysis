@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,17 +38,11 @@ public class IPLAnalyser {
 		loadBattingStats(csvFilePath);
 		if (iplBattingList == null || iplBattingList.size() == 0)
 			throw new CSVException("No Census data found", CSVException.ExceptionType.NO_CENSUS_DATA);
-		iplBattingList = iplBattingList.stream().map(batsman -> {
-			try {
-				Double.parseDouble(batsman.average);
-			} catch (NumberFormatException e) {
-				batsman.average = "0";
-			}
-			return batsman;
-		}).collect(Collectors.toList());
-		Collections.sort(iplBattingList, Comparator.comparing(batting -> Double.parseDouble(batting.average)));
-		Collections.reverse(iplBattingList);
-		return iplBattingList;
+
+		return iplBattingList
+				.stream().sorted(Comparator
+						.comparing(batting -> Double.parseDouble(((IPLBatting) batting).getAverage())).reversed())
+				.collect(Collectors.toList());
 	}
 
 }

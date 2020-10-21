@@ -33,6 +33,15 @@ public class IPLBatting {
 	@CsvBindByName(column = "6s")
 	int sixes;
 
+	public String getAverage() {
+		try {
+			Double.parseDouble(average);
+			return average;
+		} catch (NumberFormatException e) {
+			return "0";
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "IPLBatting [position=" + position + ", player=" + player + ", match=" + match + ", innings=" + innings

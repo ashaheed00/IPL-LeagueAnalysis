@@ -33,14 +33,14 @@ public class IPLAnalyserTest {
 	}
 
 	@Test
-	public void givenIPLBattingData_SortBySixes_ShouldReturnMaxSR() throws CSVException {
-		List<IPLBatting> sortedBySRList = iplAnalyser.sortBySixesDesc(IPL_BATTING_CSV_FILE_PATH);
-		assertEquals(52, sortedBySRList.get(0).getSixes());
+	public void givenIPLBattingData_SortBySixes_ShouldReturnMaxSixes() throws CSVException {
+		List<IPLBatting> sortedListBySixes = iplAnalyser.sortBySixesDesc(IPL_BATTING_CSV_FILE_PATH);
+		assertEquals(52, sortedListBySixes.get(0).getSixes());
 	}
 
 	@Test
-	public void givenIPLBattingData_SortByFours_ShouldReturnMaxSR() throws CSVException {
-		List<IPLBatting> sortedBySRList = iplAnalyser.sortByFoursDesc(IPL_BATTING_CSV_FILE_PATH);
-		assertEquals(64, sortedBySRList.get(0).getFours());
+	public void givenIPLBattingData_SortByFours_ShouldReturnMaxFours() throws CSVException {
+		List<IPLBatting> sortedListByFours = iplAnalyser.sortByFoursDesc(IPL_BATTING_CSV_FILE_PATH);
+		assertEquals(64, sortedListByFours.get(0).getFours());
 	}
 }

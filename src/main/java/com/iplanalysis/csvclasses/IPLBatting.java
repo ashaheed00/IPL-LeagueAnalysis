@@ -1,37 +1,37 @@
-package com.iplanalysis.operations;
+package com.iplanalysis.csvclasses;
 
 import com.opencsv.bean.CsvBindByName;
 
 public class IPLBatting {
 
-	@CsvBindByName(column = "POS")
-	int position;
-	@CsvBindByName(column = "PLAYER")
-	String player;
+	@CsvBindByName(column = "POS", required = true)
+	private String position;
+	@CsvBindByName(column = "PLAYER", required = true)
+	private String player;
 	@CsvBindByName(column = "MAT")
-	int match;
+	private int match;
 	@CsvBindByName(column = "Inns")
-	int innings;
+	private int innings;
 	@CsvBindByName(column = "NO")
-	int notOut;
+	private int notOut;
 	@CsvBindByName(column = "Runs")
-	int runs;
+	private int runs;
 	@CsvBindByName(column = "HS")
-	String highestScore;
+	private String highestScore;
 	@CsvBindByName(column = "Avg")
-	String average;
+	private String average;
 	@CsvBindByName(column = "BF")
-	int ballFaced;
+	private int ballFaced;
 	@CsvBindByName(column = "SR")
-	double strikeRate;
+	private double strikeRate;
 	@CsvBindByName(column = "100")
-	int century;
+	private int century;
 	@CsvBindByName(column = "50")
-	int halfCentury;
+	private int halfCentury;
 	@CsvBindByName(column = "4s")
-	int fours;
+	private int fours;
 	@CsvBindByName(column = "6s")
-	int sixes;
+	private int sixes;
 
 	public String getAverage() {
 		try {

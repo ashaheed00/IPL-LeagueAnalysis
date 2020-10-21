@@ -42,6 +42,10 @@ public class IPLBatting {
 		}
 	}
 
+	public double getStrikeRate() {
+		return strikeRate;
+	}
+
 	@Override
 	public String toString() {
 		return "IPLBatting [position=" + position + ", player=" + player + ", match=" + match + ", innings=" + innings

@@ -1,3 +1,3 @@
 # IPL League Analysis BridgeLabz
-## Version UC1
-#### Top Batting average
+## Version UC2
+#### Top Strike Rate

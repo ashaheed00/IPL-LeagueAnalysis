@@ -29,5 +29,5 @@ dependencies {
     
     compile 'com.opencsv:opencsv:4.0'
     
-	compile files('C:/Users/user/eclipse-workspace/IPLLeagueAnalysis/opencsv-builder-1.1.jar')
+	compile files('C:/Users/user/eclipse-workspace/IPL-LeagueAnalysis/opencsv-builder-1.1.jar')
 }

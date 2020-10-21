@@ -12,7 +12,7 @@ import com.opencsv.builder.CSVException;
 
 public class IPLAnalyserTest {
 
-	private static final String IPL_BATTING_CSV_FILE_PATH = "C:/Users/user/eclipse-workspace/IPLLeagueAnalysis/LeaguesStats/IPL2019FactsheetMostRuns.csv";
+	private static final String IPL_BATTING_CSV_FILE_PATH = "C:/Users/user/eclipse-workspace/IPL-LeagueAnalysis/LeaguesStats/IPL2019FactsheetMostRuns.csv";
 	IPLAnalyser iplAnalyser;
 
 	@Before
@@ -21,8 +21,14 @@ public class IPLAnalyserTest {
 	}
 
 	@Test
-	public void givenIPLData_ShouldReturnNumberOfRecords() throws CSVException {
+	public void givenIPLBattingData_SortByAvg_ShouldReturnMaxAvg() throws CSVException {
 		List<IPLBatting> highestBattingAvg = iplAnalyser.sortByBattingAvgDesc(IPL_BATTING_CSV_FILE_PATH);
 		assertEquals("83.2", highestBattingAvg.get(0).getAverage());
+	}
+
+	@Test
+	public void givenIPLBattingData_SortBySR_ShouldReturnMaxSR() throws CSVException {
+		List<IPLBatting> sortedBySRList = iplAnalyser.sortByStrikeRateDesc(IPL_BATTING_CSV_FILE_PATH);
+		assertEquals(333.33, sortedBySRList.get(0).getStrikeRate(), 0);
 	}
 }

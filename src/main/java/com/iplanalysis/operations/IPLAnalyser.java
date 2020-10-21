@@ -32,11 +32,15 @@ public class IPLAnalyser {
 	}
 
 	public List<IPLBatting> sortBySixesDesc(String csvFilePath) throws CSVException {
-		return null;
+		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
+		return iplBattingList.stream().sorted(Comparator.comparing(IPLBatting::getSixes).reversed())
+				.collect(Collectors.toList());
 	}
 
 	public List<IPLBatting> sortByFoursDesc(String csvFilePath) throws CSVException {
-		return null;
+		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
+		return iplBattingList.stream().sorted(Comparator.comparing(IPLBatting::getFours).reversed())
+				.collect(Collectors.toList());
 	}
 
 }

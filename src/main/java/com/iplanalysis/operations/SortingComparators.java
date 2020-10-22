@@ -3,6 +3,7 @@ package com.iplanalysis.operations;
 import java.util.Comparator;
 
 import com.iplanalysis.csvclasses.IPLBatting;
+import com.iplanalysis.csvclasses.IPLBowling;
 
 public class SortingComparators {
 
@@ -19,5 +20,6 @@ public class SortingComparators {
 			.thenComparing(Comparator.comparing(IPLBatting::getStrikeRate)).reversed();
 	public final static Comparator<Object> BEST_AVG_WITH_BEST_SR = BEST_BATTING_AVG
 			.thenComparing(Comparator.comparing(b -> ((IPLBatting) b).getStrikeRate()));
+	public static final Comparator<IPLBowling> BEST_BOWLING_AVG = null;
 
 }

@@ -10,10 +10,11 @@ import org.junit.Test;
 import com.iplanalysis.csvclasses.IPLBatting;
 import com.opencsv.builder.CSVException;
 
-public class IPLAnalyserTest {
+public class IPLBattingAnalyserTest {
 
 	private static final String IPL_BATTING_CSV_FILE_PATH = "C:/Users/user/eclipse-workspace/IPL-LeagueAnalysis/LeaguesStats/IPL2019FactsheetMostRuns.csv";
 	IPLAnalyser iplAnalyser;
+	List<IPLBatting> sortedBattingList;
 
 	IPLBatting ipl = new IPLBatting();
 
@@ -61,13 +62,6 @@ public class IPLAnalyserTest {
 	@Test
 	public void givenIPLBattingData_SortMaxRunsWithBestSR_ShouldReturnMaxRunsWithBestSR() throws CSVException {
 		List<IPLBatting> sortedList = iplAnalyser.sortByRunsWithBestSR(IPL_BATTING_CSV_FILE_PATH);
-		assertEquals("David Warner", sortedList.get(0).getPlayer().trim());
-	}
-
-	@Test
-	public void sortMaxRunsWithBestSR_ShouldReturnMaxRunsWithBestSR() throws CSVException {
-		List<IPLBatting> sortedList = iplAnalyser.sortByField(IPL_BATTING_CSV_FILE_PATH,
-				SortingComparators.MAX_RUNS_BEST_SR);
 		assertEquals("David Warner", sortedList.get(0).getPlayer().trim());
 	}
 }

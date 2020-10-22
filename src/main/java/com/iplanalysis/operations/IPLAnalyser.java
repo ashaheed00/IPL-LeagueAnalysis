@@ -57,4 +57,8 @@ public class IPLAnalyser {
 				.sorted(Comparator.comparing(b -> Double.parseDouble(((IPLBatting) b).getAverage())).reversed())
 				.collect(Collectors.toList());
 	}
+
+	public List<IPLBatting> sortByRunsWithBestSR(String csvFilePath) throws CSVException {
+		return null;
+	}
 }

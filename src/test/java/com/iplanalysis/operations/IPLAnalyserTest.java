@@ -57,4 +57,10 @@ public class IPLAnalyserTest {
 		List<IPLBatting> sortedList = iplAnalyser.sortByBestAvgWithBestSR(IPL_BATTING_CSV_FILE_PATH);
 		assertEquals("MS Dhoni", sortedList.get(0).getPlayer());
 	}
+
+	@Test
+	public void givenIPLBattingData_SortMaxRunsWithBestSR_ShouldReturnMaxRunsWithBestSR() throws CSVException {
+		List<IPLBatting> sortedList = iplAnalyser.sortByRunsWithBestSR(IPL_BATTING_CSV_FILE_PATH);
+		assertEquals("David Warner", sortedList.get(0).getPlayer().trim());
+	}
 }

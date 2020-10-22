@@ -52,6 +52,9 @@ public class IPLAnalyser {
 	}
 
 	public List<IPLBatting> sortByBestAvgWithBestSR(String csvFilePath) throws CSVException {
-		return null;
+		iplBattingList = sortByStrikeRateDesc(csvFilePath);
+		return iplBattingList.stream()
+				.sorted(Comparator.comparing(b -> Double.parseDouble(((IPLBatting) b).getAverage())).reversed())
+				.collect(Collectors.toList());
 	}
 }

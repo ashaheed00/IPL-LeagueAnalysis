@@ -19,49 +19,36 @@ public class IPLAnalyser {
 
 	public List<IPLBatting> sortByBattingAvgDesc(String csvFilePath) throws CSVException {
 		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
-		return iplBattingList
-				.stream().sorted(Comparator
-						.comparing(batting -> Double.parseDouble(((IPLBatting) batting).getAverage())).reversed())
-				.collect(Collectors.toList());
+		return iplBattingList.stream().sorted(SortingComparators.BEST_BATTING_AVG).collect(Collectors.toList());
 	}
 
 	public List<IPLBatting> sortByStrikeRateDesc(String csvFilePath) throws CSVException {
 		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
-		return iplBattingList.stream().sorted(Comparator.comparing(IPLBatting::getStrikeRate).reversed())
-				.collect(Collectors.toList());
+		return iplBattingList.stream().sorted(SortingComparators.BEST_SR).collect(Collectors.toList());
 	}
 
 	public List<IPLBatting> sortBySixesDesc(String csvFilePath) throws CSVException {
 		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
-		return iplBattingList.stream().sorted(Comparator.comparing(IPLBatting::getSixes).reversed())
-				.collect(Collectors.toList());
+		return iplBattingList.stream().sorted(SortingComparators.MOST_SIXES).collect(Collectors.toList());
 	}
 
 	public List<IPLBatting> sortByFoursDesc(String csvFilePath) throws CSVException {
 		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
-		return iplBattingList.stream().sorted(Comparator.comparing(IPLBatting::getFours).reversed())
-				.collect(Collectors.toList());
+		return iplBattingList.stream().sorted(SortingComparators.MOST_FOURS).collect(Collectors.toList());
 	}
 
 	public List<IPLBatting> sortByBestSRWithSixesFours(String csvFilePath) throws CSVException {
-		iplBattingList = sortByStrikeRateDesc(csvFilePath);
-		return iplBattingList
-				.stream().sorted(Comparator
-						.comparing(b -> ((IPLBatting) b).getSixes() * 6 + ((IPLBatting) b).getFours() * 4).reversed())
-				.collect(Collectors.toList());
+		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
+		return iplBattingList.stream().sorted(SortingComparators.MAX_SR_WITH_MOST_6s4s).collect(Collectors.toList());
 	}
 
 	public List<IPLBatting> sortByBestAvgWithBestSR(String csvFilePath) throws CSVException {
-		iplBattingList = sortByStrikeRateDesc(csvFilePath);
-		return iplBattingList.stream()
-				.sorted(Comparator.comparing(b -> Double.parseDouble(((IPLBatting) b).getAverage())).reversed())
-				.collect(Collectors.toList());
+		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
+		return iplBattingList.stream().sorted(SortingComparators.BEST_AVG_WITH_BEST_SR).collect(Collectors.toList());
 	}
 
 	public List<IPLBatting> sortByRunsWithBestSR(String csvFilePath) throws CSVException {
 		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
-		Comparator<IPLBatting> a = Comparator.comparing(IPLBatting::getRuns)
-				.thenComparing(Comparator.comparing(IPLBatting::getStrikeRate)).reversed();
-		return iplBattingList.stream().sorted(a).collect(Collectors.toList());
+		return iplBattingList.stream().sorted(SortingComparators.MAX_RUNS_BEST_SR).collect(Collectors.toList());
 	}
 }

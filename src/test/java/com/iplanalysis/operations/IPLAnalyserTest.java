@@ -15,8 +15,10 @@ public class IPLAnalyserTest {
 	private static final String IPL_BATTING_CSV_FILE_PATH = "C:/Users/user/eclipse-workspace/IPL-LeagueAnalysis/LeaguesStats/IPL2019FactsheetMostRuns.csv";
 	IPLAnalyser iplAnalyser;
 
+	IPLBatting ipl = new IPLBatting();
+
 	@Before
-	public void initializer() {
+	public void initializer() throws NoSuchFieldException, SecurityException {
 		iplAnalyser = new IPLAnalyser();
 	}
 
@@ -42,5 +44,11 @@ public class IPLAnalyserTest {
 	public void givenIPLBattingData_SortByFours_ShouldReturnMaxFours() throws CSVException {
 		List<IPLBatting> sortedListByFours = iplAnalyser.sortByFoursDesc(IPL_BATTING_CSV_FILE_PATH);
 		assertEquals(64, sortedListByFours.get(0).getFours());
+	}
+
+	@Test
+	public void givenIPLBattingData_SortBySRAndSixesFours_ShouldReturnMaxSixFourWithBestSR() throws CSVException {
+		List<IPLBatting> sortedListByBoundary = iplAnalyser.getBestSRWithSixesFours(IPL_BATTING_CSV_FILE_PATH);
+		assertEquals("Andre Russell", sortedListByBoundary.get(0).getPlayer());
 	}
 }

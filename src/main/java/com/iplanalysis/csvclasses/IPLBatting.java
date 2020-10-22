@@ -3,7 +3,7 @@ package com.iplanalysis.csvclasses;
 import com.opencsv.bean.CsvBindByName;
 
 public class IPLBatting {
-
+	
 	@CsvBindByName(column = "POS", required = true)
 	private String position;
 	@CsvBindByName(column = "PLAYER", required = true)
@@ -36,10 +36,14 @@ public class IPLBatting {
 	public String getAverage() {
 		try {
 			Double.parseDouble(average);
-			return average;
 		} catch (NumberFormatException e) {
-			return "0";
+			average = "0";
 		}
+		return average;
+	}
+
+	public String getPlayer() {
+		return player;
 	}
 
 	public double getStrikeRate() {

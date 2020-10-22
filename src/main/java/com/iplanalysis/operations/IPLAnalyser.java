@@ -43,4 +43,8 @@ public class IPLAnalyser {
 				.collect(Collectors.toList());
 	}
 
+	public List<IPLBatting> getBestSRWithSixesFours(String csvFilePath) throws CSVException {
+		return null;
+	}
+
 }

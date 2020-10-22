@@ -48,7 +48,13 @@ public class IPLAnalyserTest {
 
 	@Test
 	public void givenIPLBattingData_SortBySRAndSixesFours_ShouldReturnMaxSixFourWithBestSR() throws CSVException {
-		List<IPLBatting> sortedListByBoundary = iplAnalyser.getBestSRWithSixesFours(IPL_BATTING_CSV_FILE_PATH);
-		assertEquals("Andre Russell", sortedListByBoundary.get(0).getPlayer());
+		List<IPLBatting> sortedList = iplAnalyser.sortByBestSRWithSixesFours(IPL_BATTING_CSV_FILE_PATH);
+		assertEquals("Andre Russell", sortedList.get(0).getPlayer());
+	}
+
+	@Test
+	public void givenIPLBattingData_SortByAvgAndStrikeRate_ShouldReturnBestAvgWithBestSR() throws CSVException {
+		List<IPLBatting> sortedList = iplAnalyser.sortByBestAvgWithBestSR(IPL_BATTING_CSV_FILE_PATH);
+		assertEquals("MS Dhoni", sortedList.get(0).getPlayer());
 	}
 }

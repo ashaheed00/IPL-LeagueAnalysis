@@ -43,11 +43,15 @@ public class IPLAnalyser {
 				.collect(Collectors.toList());
 	}
 
-	public List<IPLBatting> getBestSRWithSixesFours(String csvFilePath) throws CSVException {
+	public List<IPLBatting> sortByBestSRWithSixesFours(String csvFilePath) throws CSVException {
 		iplBattingList = sortByStrikeRateDesc(csvFilePath);
 		return iplBattingList
 				.stream().sorted(Comparator
 						.comparing(b -> ((IPLBatting) b).getSixes() * 6 + ((IPLBatting) b).getFours() * 4).reversed())
 				.collect(Collectors.toList());
+	}
+
+	public List<IPLBatting> sortByBestAvgWithBestSR(String csvFilePath) throws CSVException {
+		return null;
 	}
 }

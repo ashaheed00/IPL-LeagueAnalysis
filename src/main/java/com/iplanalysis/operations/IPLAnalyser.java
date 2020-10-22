@@ -51,4 +51,9 @@ public class IPLAnalyser {
 		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
 		return iplBattingList.stream().sorted(SortingComparators.MAX_RUNS_BEST_SR).collect(Collectors.toList());
 	}
+
+	public List<IPLBatting> sortByField(String csvFilePath, Comparator<IPLBatting> comparator) throws CSVException {
+		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
+		return iplBattingList.stream().sorted(comparator).collect(Collectors.toList());
+	}
 }

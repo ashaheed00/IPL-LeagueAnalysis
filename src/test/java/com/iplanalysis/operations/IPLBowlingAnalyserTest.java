@@ -34,4 +34,10 @@ public class IPLBowlingAnalyserTest {
 		sortedBowlingList = iplAnalyser.sortBowlingData(IPL_BOWLING_CSV_FILE_PATH, SortingComparators.BEST_BOWLING_SR);
 		assertEquals("Alzarri Joseph", sortedBowlingList.get(0).getPlayer());
 	}
+
+	@Test
+	public void givenIPLBowlingData_SortByEconomy_ShouldReturnBestEconomyBowler() throws CSVException {
+		sortedBowlingList = iplAnalyser.sortBowlingData(IPL_BOWLING_CSV_FILE_PATH, SortingComparators.BEST_ECONOMY_BOWLER);
+		assertEquals("Shivam Dube", sortedBowlingList.get(0).getPlayer());
+	}
 }

@@ -25,8 +25,7 @@ public class IPLBowlingAnalyserTest {
 
 	@Test
 	public void givenIPLBattingData_SortByAvg_ShouldReturnMaxAvg() throws CSVException {
-		sortedBowlingList = iplAnalyser.sortBowlingDataByField(IPL_BOWLING_CSV_FILE_PATH,
-				SortingComparators.BEST_BOWLING_AVG);
-		assertEquals("83.2", sortedBowlingList.get(0).getAverage());
+		sortedBowlingList = iplAnalyser.sortBowlingData(IPL_BOWLING_CSV_FILE_PATH, SortingComparators.BEST_BOWLING_AVG);
+		assertEquals("Anukul Roy", sortedBowlingList.get(0).getPlayer());
 	}
 }

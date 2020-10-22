@@ -7,6 +7,7 @@ import com.iplanalysis.csvclasses.IPLBowling;
 
 public class SortingComparators {
 
+	/* Batting data sorting comparators */
 	public final static Comparator<Object> BEST_BATTING_AVG = Comparator
 			.comparing(batting -> Double.parseDouble(((IPLBatting) batting).getAverage())).reversed();
 	public final static Comparator<IPLBatting> BEST_SR = Comparator.comparing(IPLBatting::getStrikeRate).reversed();
@@ -20,6 +21,9 @@ public class SortingComparators {
 			.thenComparing(Comparator.comparing(IPLBatting::getStrikeRate)).reversed();
 	public final static Comparator<Object> BEST_AVG_WITH_BEST_SR = BEST_BATTING_AVG
 			.thenComparing(Comparator.comparing(b -> ((IPLBatting) b).getStrikeRate()));
-	public static final Comparator<IPLBowling> BEST_BOWLING_AVG = null;
+
+	/* Bowling data sorting comparators */
+	public static final Comparator<IPLBowling> BEST_BOWLING_AVG = Comparator
+			.comparing(b -> Double.parseDouble(b.getAverage()));
 
 }

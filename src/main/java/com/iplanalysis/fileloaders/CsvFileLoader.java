@@ -50,5 +50,4 @@ public class CsvFileLoader {
 			throw new CSVException(e.getCause().getMessage(), CSVException.ExceptionType.CSV_FILE_INTERNAL_ISSUES);
 		}
 	}
-
 }

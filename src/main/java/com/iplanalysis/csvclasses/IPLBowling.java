@@ -3,9 +3,9 @@ package com.iplanalysis.csvclasses;
 import com.opencsv.bean.CsvBindByName;
 
 public class IPLBowling {
-	@CsvBindByName(column = "POS", required = true)
+	@CsvBindByName(column = "POS")
 	private int position;
-	@CsvBindByName(column = "PLAYER", required = true)
+	@CsvBindByName(column = "PLAYER")
 	private String player;
 	@CsvBindByName(column = "MAT")
 	private int match;

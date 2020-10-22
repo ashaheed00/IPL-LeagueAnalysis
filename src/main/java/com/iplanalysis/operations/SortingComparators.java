@@ -25,5 +25,6 @@ public class SortingComparators {
 	/* Bowling data sorting comparators */
 	public static final Comparator<IPLBowling> BEST_BOWLING_AVG = Comparator
 			.comparing(b -> Double.parseDouble(b.getAverage()));
-
+	public static final Comparator<IPLBowling> BEST_BOWLING_SR = Comparator
+			.comparing(b -> Double.parseDouble(b.getStrikeRate()));
 }

@@ -16,8 +16,6 @@ public class IPLBattingAnalyserTest {
 	IPLAnalyser iplAnalyser;
 	List<IPLBatting> sortedBattingList;
 
-	IPLBatting ipl = new IPLBatting();
-
 	@Before
 	public void initializer() throws NoSuchFieldException, SecurityException {
 		iplAnalyser = new IPLAnalyser();
@@ -25,45 +23,50 @@ public class IPLBattingAnalyserTest {
 
 	@Test
 	public void givenIPLBattingData_SortByAvg_ShouldReturnMaxAvg() throws CSVException {
-		sortedBattingList = iplAnalyser.sortBattingData(IPL_BATTING_CSV_FILE_PATH, SortingComparators.BEST_BATTING_AVG);
+		sortedBattingList = iplAnalyser.sortData(IPL_BATTING_CSV_FILE_PATH, SortingComparators.BEST_BATTING_AVG,
+				IPLBatting.class);
 		assertEquals("MS Dhoni", ((IPLBatting) sortedBattingList.get(0)).getPlayer());
 	}
 
 	@Test
 	public void givenIPLBattingData_SortBySR_ShouldReturnMaxSR() throws CSVException {
-		sortedBattingList = iplAnalyser.sortBattingData(IPL_BATTING_CSV_FILE_PATH, SortingComparators.BEST_SR);
+		sortedBattingList = iplAnalyser.sortData(IPL_BATTING_CSV_FILE_PATH, SortingComparators.BEST_SR,
+				IPLBatting.class);
 		assertEquals("Ishant Sharma", ((IPLBatting) sortedBattingList.get(0)).getPlayer());
 	}
 
 	@Test
 	public void givenIPLBattingData_SortBySixes_ShouldReturnMaxSixes() throws CSVException {
-		sortedBattingList = iplAnalyser.sortBattingData(IPL_BATTING_CSV_FILE_PATH, SortingComparators.MOST_SIXES);
+		sortedBattingList = iplAnalyser.sortData(IPL_BATTING_CSV_FILE_PATH, SortingComparators.MOST_SIXES,
+				IPLBatting.class);
 		assertEquals("Andre Russell", ((IPLBatting) sortedBattingList.get(0)).getPlayer());
 	}
 
 	@Test
 	public void givenIPLBattingData_SortByFours_ShouldReturnMaxFours() throws CSVException {
-		sortedBattingList = iplAnalyser.sortBattingData(IPL_BATTING_CSV_FILE_PATH, SortingComparators.MOST_FOURS);
+		sortedBattingList = iplAnalyser.sortData(IPL_BATTING_CSV_FILE_PATH, SortingComparators.MOST_FOURS,
+				IPLBatting.class);
 		assertEquals("Shikhar Dhawan", ((IPLBatting) sortedBattingList.get(0)).getPlayer());
 	}
 
 	@Test
 	public void givenIPLBattingData_SortBySRAndSixesFours_ShouldReturnMaxSixFourWithBestSR() throws CSVException {
-		sortedBattingList = iplAnalyser.sortBattingData(IPL_BATTING_CSV_FILE_PATH,
-				SortingComparators.MAX_SR_WITH_MOST_6s4s);
+		sortedBattingList = iplAnalyser.sortData(IPL_BATTING_CSV_FILE_PATH, SortingComparators.MAX_SR_WITH_MOST_6s4s,
+				IPLBatting.class);
 		assertEquals("Andre Russell", ((IPLBatting) sortedBattingList.get(0)).getPlayer());
 	}
 
 	@Test
 	public void givenIPLBattingData_SortByAvgAndStrikeRate_ShouldReturnBestAvgWithBestSR() throws CSVException {
-		sortedBattingList = iplAnalyser.sortBattingData(IPL_BATTING_CSV_FILE_PATH,
-				SortingComparators.BEST_AVG_WITH_BEST_SR);
+		sortedBattingList = iplAnalyser.sortData(IPL_BATTING_CSV_FILE_PATH, SortingComparators.BEST_AVG_WITH_BEST_SR,
+				IPLBatting.class);
 		assertEquals("MS Dhoni", ((IPLBatting) sortedBattingList.get(0)).getPlayer());
 	}
 
 	@Test
 	public void givenIPLBattingData_SortMaxRunsWithBestSR_ShouldReturnMaxRunsWithBestSR() throws CSVException {
-		sortedBattingList = iplAnalyser.sortBattingData(IPL_BATTING_CSV_FILE_PATH, SortingComparators.MAX_RUNS_BEST_SR);
+		sortedBattingList = iplAnalyser.sortData(IPL_BATTING_CSV_FILE_PATH, SortingComparators.MAX_RUNS_BEST_SR,
+				IPLBatting.class);
 		assertEquals("David Warner", ((IPLBatting) sortedBattingList.get(0)).getPlayer());
 	}
 }

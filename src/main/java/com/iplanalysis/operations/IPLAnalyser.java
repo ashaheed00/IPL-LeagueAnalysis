@@ -11,23 +11,18 @@ import com.opencsv.builder.CSVException;
 
 public class IPLAnalyser {
 
-	private List<IPLBatting> iplBattingList;
-	private List<IPLBowling> iplBowlingList;
 	private CsvFileLoader csvFileLoader;
 
 	public IPLAnalyser() {
 		csvFileLoader = new CsvFileLoader();
 	}
 
-	// This method is common method to sort batting data providing any Comparator
-	public List<IPLBatting> sortBattingData(String csvFilePath, Comparator comparator) throws CSVException {
-		iplBattingList = csvFileLoader.loadBattingStats(csvFilePath);
-		return (List<IPLBatting>) iplBattingList.stream().sorted(comparator).collect(Collectors.toList());
-	}
-
-	// This method is common method to sort bowling data providing any Comparator
-	public List<IPLBowling> sortBowlingData(String csvFilePath, Comparator comparator) throws CSVException {
-		iplBowlingList = csvFileLoader.loadBowlingStats(csvFilePath);
-		return (List<IPLBowling>) iplBowlingList.stream().sorted(comparator).collect(Collectors.toList());
+	/**
+	 * This method is a common method using generic to sort any type of data
+	 * providing class type and Comparator
+	 */
+	public <E> List<E> sortData(String csvFilePath, Comparator comparator, Class<E> csvClass) throws CSVException {
+		List<E> iplList = csvFileLoader.loadStats(csvFilePath, csvClass);
+		return (List<E>) iplList.stream().sorted(comparator).collect(Collectors.toList());
 	}
 }

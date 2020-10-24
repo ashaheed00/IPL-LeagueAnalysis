@@ -30,4 +30,5 @@ public class SortingComparators {
 	public static final Comparator<IPLBowler> BEST_ECONOMY_BOWLER = Comparator.comparing(IPLBowler::getEconomy);
 	public static final Comparator<IPLBowler> BEST_SR_WITH_5W4W = Comparator
 			.comparing(IPLBowler::getFourAndFiveWickets).reversed().thenComparing(BEST_BOWLING_SR);
+	public static final Comparator BEST_BOWLING_AVG_WITH_BEST_SR = null;
 }

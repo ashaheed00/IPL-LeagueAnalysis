@@ -52,4 +52,11 @@ public class IPLBowlingAnalyserTest {
 				IPLBowler.class);
 		assertEquals("Kagiso Rabada", sortedBowlingList.get(0).getPlayer());
 	}
+
+	@Test
+	public void givenIPLBowlingData_sortByBestAvgWithBestSR_shouldReturnBestAvgWithBestSRBowler() throws CSVException {
+		sortedBowlingList = iplAnalyser.sortData(IPL_BOWLING_CSV_FILE_PATH, SortingComparators.BEST_BOWLING_AVG_WITH_BEST_SR,
+				IPLBowler.class);
+		assertEquals("Alzarri Joseph", sortedBowlingList.get(0).getPlayer());
+	}
 }

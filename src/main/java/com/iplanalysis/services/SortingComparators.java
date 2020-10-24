@@ -22,6 +22,8 @@ public class SortingComparators {
 			.thenComparing(Comparator.comparing(IPLBatsman::getStrikeRate)).reversed();
 	public final static Comparator<Object> BEST_AVG_WITH_BEST_SR = BEST_BATTING_AVG
 			.thenComparing(Comparator.comparing(b -> ((IPLBatsman) b).getStrikeRate()));
+	public static final Comparator<IPLBatsman> MOST_HUNDREDS_WITH_BEST_AVG = Comparator
+			.comparing(IPLBatsman::getCentury).reversed().thenComparing(BEST_BATTING_AVG);
 
 	/* Bowling data sorting comparators */
 	public static final Comparator<IPLBowler> BEST_BOWLING_AVG = Comparator

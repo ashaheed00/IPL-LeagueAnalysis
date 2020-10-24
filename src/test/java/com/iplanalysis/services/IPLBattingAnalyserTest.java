@@ -71,4 +71,11 @@ public class IPLBattingAnalyserTest {
 				IPLBatsman.class);
 		assertEquals("David Warner", ((IPLBatsman) sortedBattingList.get(0)).getPlayer());
 	}
+
+	@Test
+	public void givenIPLData_sortByMostHundredsAndBestAvg_ShouldReturnBatsmen() throws CSVException {
+		sortedBattingList = iplAnalyser.sortData(IPL_BATTING_CSV_FILE_PATH,
+				SortingComparators.MOST_HUNDREDS_WITH_BEST_AVG, IPLBatsman.class);
+		assertEquals("David Warner", sortedBattingList.get(0).getPlayer());
+	}
 }

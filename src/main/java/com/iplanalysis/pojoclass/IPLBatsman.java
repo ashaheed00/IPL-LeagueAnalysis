@@ -66,6 +66,10 @@ public class IPLBatsman {
 		return century;
 	}
 
+	public int getHalfCentury() {
+		return halfCentury;
+	}
+
 	@Override
 	public String toString() {
 		return "IPLBatting [position=" + position + ", player=" + player + ", match=" + match + ", innings=" + innings

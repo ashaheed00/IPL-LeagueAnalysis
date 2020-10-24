@@ -73,9 +73,18 @@ public class IPLBattingAnalyserTest {
 	}
 
 	@Test
-	public void givenIPLData_sortByMostHundredsAndBestAvg_ShouldReturnBatsmen() throws CSVException {
+	public void givenIPLBattingData_sortByMostHundredsAndBestAvg_ShouldReturnBatsmen() throws CSVException {
 		sortedBattingList = iplAnalyser.sortData(IPL_BATTING_CSV_FILE_PATH,
 				SortingComparators.MOST_HUNDREDS_WITH_BEST_AVG, IPLBatsman.class);
 		assertEquals("David Warner", sortedBattingList.get(0).getPlayer());
+	}
+	
+	@Test
+	public void givenIPLBattingData_sortByBestAvgWithNoCenturyAndHalfCentury_ShouldReturnBatsmen() throws CSVException {
+		sortedBattingList = iplAnalyser.sortData(IPL_BATTING_CSV_FILE_PATH,
+				SortingComparators.BEST_AVG_WITH_ZERO_100s_50s, IPLBatsman.class);
+for(IPLBatsman i: sortedBattingList)
+	System.out.println(i);
+		assertEquals("Marcus Stoinis", sortedBattingList.get(0).getPlayer());
 	}
 }

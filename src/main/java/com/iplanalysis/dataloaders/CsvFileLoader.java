@@ -1,4 +1,4 @@
-package com.iplanalysis.fileloaders;
+package com.iplanalysis.dataloaders;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,19 +6,18 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-import com.iplanalysis.csvclasses.IPLBatting;
-import com.iplanalysis.csvclasses.IPLBowling;
+import com.iplanalysis.pojoclass.IPLBatsman;
+import com.iplanalysis.pojoclass.IPLBowler;
 import com.opencsv.builder.CSVBuilderFactory;
 import com.opencsv.builder.CSVException;
 
-public class CsvFileLoader {
-
+public class CsvFileLoader implements IDataLoaders {
+	@Override
 	public <E> List<E> loadStats(String csvFilePath, Class<E> csvClass) throws CSVException {
 		String[] file = csvFilePath.split("[.]");
 		try (BufferedReader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
-			if (!file[1].equals("csv")) {
+			if (!file[1].equals("csv"))
 				throw new CSVException("Wrong File type", CSVException.ExceptionType.WRONG_FILE_TYPE);
-			}
 			List<E> csvList = CSVBuilderFactory.createCSVBuilder().getCsvFileList(reader, csvClass);
 			if (csvList == null || csvList.size() == 0)
 				throw new CSVException("No Census data found", CSVException.ExceptionType.NO_CENSUS_DATA);

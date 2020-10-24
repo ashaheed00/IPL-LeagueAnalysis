@@ -1,17 +1,18 @@
-package com.iplanalysis.operations;
+package com.iplanalysis.services;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.iplanalysis.csvclasses.IPLBatting;
-import com.iplanalysis.csvclasses.IPLBowling;
-import com.iplanalysis.fileloaders.CsvFileLoader;
+import com.iplanalysis.dataloaders.CsvFileLoader;
+import com.iplanalysis.dataloaders.IDataLoaders;
+import com.iplanalysis.pojoclass.IPLBatsman;
+import com.iplanalysis.pojoclass.IPLBowler;
 import com.opencsv.builder.CSVException;
 
-public class IPLAnalyser {
+public class IPLAnalyser implements DataAnalyser {
 
-	private CsvFileLoader csvFileLoader;
+	private IDataLoaders csvFileLoader;
 
 	public IPLAnalyser() {
 		csvFileLoader = new CsvFileLoader();

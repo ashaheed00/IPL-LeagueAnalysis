@@ -1,8 +1,8 @@
-package com.iplanalysis.csvclasses;
+package com.iplanalysis.pojoclass;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class IPLBatting {
+public class IPLBatsman {
 
 	@CsvBindByName(column = "POS", required = true)
 	private String position;

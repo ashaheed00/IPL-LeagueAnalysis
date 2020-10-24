@@ -1,8 +1,8 @@
-package com.iplanalysis.csvclasses;
+package com.iplanalysis.pojoclass;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class IPLBowling {
+public class IPLBowler {
 	@CsvBindByName(column = "POS")
 	private int position;
 	@CsvBindByName(column = "PLAYER")

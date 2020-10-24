@@ -92,6 +92,10 @@ public class IPLBowling {
 		return fiveWickets;
 	}
 
+	public int getFourAndFiveWickets() {
+		return fourWickets * 4 + fiveWickets * 5;
+	}
+
 	@Override
 	public String toString() {
 		return "IPLBowling [position=" + position + ", player=" + player + ", match=" + match + ", innings=" + innings

@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import com.iplanalysis.pojoclass.IPLAllRounder;
 import com.iplanalysis.pojoclass.IPLBatsman;
 import com.iplanalysis.pojoclass.IPLBowler;
 import com.opencsv.builder.CSVBuilderFactory;
@@ -28,5 +29,9 @@ public class CsvFileLoader implements IDataLoaders {
 		} catch (RuntimeException e) {
 			throw new CSVException(e.getCause().getMessage(), CSVException.ExceptionType.CSV_FILE_INTERNAL_ISSUES);
 		}
+	}
+
+	public List<IPLAllRounder> loadStats(String batsmanFilePath, String bowlerFilePath) {
+		return null;
 	}
 }

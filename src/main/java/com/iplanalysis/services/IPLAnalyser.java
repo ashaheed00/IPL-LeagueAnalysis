@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import com.iplanalysis.dataloaders.CsvFileLoader;
 import com.iplanalysis.dataloaders.IDataLoaders;
+import com.iplanalysis.pojoclass.IPLAllRounder;
 import com.iplanalysis.pojoclass.IPLBatsman;
 import com.iplanalysis.pojoclass.IPLBowler;
 import com.opencsv.builder.CSVException;
@@ -25,5 +26,11 @@ public class IPLAnalyser implements DataAnalyser {
 	public <E> List<E> sortData(String csvFilePath, Comparator comparator, Class<E> csvClass) throws CSVException {
 		List<E> iplList = csvFileLoader.loadStats(csvFilePath, csvClass);
 		return (List<E>) iplList.stream().sorted(comparator).collect(Collectors.toList());
+	}
+
+	public List<IPLAllRounder> sortAllrounderData(String batsmanFilePath, String bowlerFilePath) {
+
+		return null;
+
 	}
 }

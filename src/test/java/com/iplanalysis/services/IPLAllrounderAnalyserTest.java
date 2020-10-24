@@ -23,7 +23,8 @@ public class IPLAllrounderAnalyserTest {
 
 	@Test
 	public void givenIPLBowlingData_SortByAvg_ShouldReturnBestAvg() throws CSVException {
-		sortedAllrounderList = iplAnalyser.sortAllrounderData(IPL_BATTING_CSV_FILE_PATH, IPL_BOWLING_CSV_FILE_PATH);
+		sortedAllrounderList = iplAnalyser.sortAllrounderData(IPL_BATTING_CSV_FILE_PATH, IPL_BOWLING_CSV_FILE_PATH,
+				SortingComparators.BEST_BATTING_AND_BOWLING_AVG);
 		assertEquals("Andre Russell", sortedAllrounderList.get(0).getPlayer());
 	}
 

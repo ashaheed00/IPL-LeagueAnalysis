@@ -3,17 +3,17 @@ package com.iplanalysis.pojoclass;
 public class IPLAllRounder {
 
 	private String player;
-	private double battingAverage;
-	private double bowlingAverage;
+	private String battingAverage;
+	private String bowlingAverage;
 	private int runs;
 	private int wickets;
 
-	public IPLAllRounder(String player, double battingAverage, double bowlingAverage, int runs, int wickets) {
+	public IPLAllRounder(String player, int runs, int wickets, String battingAverage, String bowlingAverage) {
 		this.player = player;
-		this.battingAverage = battingAverage;
-		this.bowlingAverage = bowlingAverage;
 		this.runs = runs;
 		this.wickets = wickets;
+		this.battingAverage = battingAverage;
+		this.bowlingAverage = bowlingAverage;
 	}
 
 	public String getPlayer() {
@@ -21,11 +21,11 @@ public class IPLAllRounder {
 	}
 
 	public double getBattingAverage() {
-		return battingAverage;
+		return Double.parseDouble(battingAverage);
 	}
 
 	public double getBowlingAverage() {
-		return bowlingAverage;
+		return Double.parseDouble(bowlingAverage);
 	}
 
 	public int getRuns() {
@@ -37,7 +37,7 @@ public class IPLAllRounder {
 	}
 
 	public double getPerformanceByAverage() {
-		return battingAverage - bowlingAverage;
+		return getBattingAverage() - getBowlingAverage();
 	}
 
 	public double getPerformanceByRunsAndWickets() {

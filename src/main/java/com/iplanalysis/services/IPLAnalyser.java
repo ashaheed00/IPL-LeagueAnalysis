@@ -13,7 +13,7 @@ import com.opencsv.builder.CSVException;
 
 public class IPLAnalyser implements DataAnalyser {
 
-	private IDataLoaders csvFileLoader;
+	private CsvFileLoader csvFileLoader;
 
 	public IPLAnalyser() {
 		csvFileLoader = new CsvFileLoader();
@@ -28,9 +28,13 @@ public class IPLAnalyser implements DataAnalyser {
 		return (List<E>) iplList.stream().sorted(comparator).collect(Collectors.toList());
 	}
 
-	public List<IPLAllRounder> sortAllrounderData(String batsmanFilePath, String bowlerFilePath) {
+	/**
+	 * This method takes batting and bowling data and sorts all-rounders data
+	 */
+	public List<IPLAllRounder> sortAllrounderData(String batsmanFilePath, String bowlerFilePath,
+			Comparator<IPLAllRounder> comparator) throws CSVException {
 
-		return null;
-
+		List<IPLAllRounder> iplAllRounderList = csvFileLoader.loadStats(batsmanFilePath, bowlerFilePath);
+		return iplAllRounderList.stream().sorted(comparator).collect(Collectors.toList());
 	}
 }

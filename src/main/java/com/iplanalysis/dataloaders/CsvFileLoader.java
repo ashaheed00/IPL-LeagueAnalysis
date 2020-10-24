@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.iplanalysis.pojoclass.IPLAllRounder;
@@ -13,6 +14,9 @@ import com.opencsv.builder.CSVBuilderFactory;
 import com.opencsv.builder.CSVException;
 
 public class CsvFileLoader implements IDataLoaders {
+
+	private List<IPLAllRounder> iplAllRounderList = new ArrayList<IPLAllRounder>();;
+
 	@Override
 	public <E> List<E> loadStats(String csvFilePath, Class<E> csvClass) throws CSVException {
 		String[] file = csvFilePath.split("[.]");
@@ -31,7 +35,19 @@ public class CsvFileLoader implements IDataLoaders {
 		}
 	}
 
-	public List<IPLAllRounder> loadStats(String batsmanFilePath, String bowlerFilePath) {
-		return null;
+	public List<IPLAllRounder> loadStats(String batsmanFilePath, String bowlerFilePath) throws CSVException {
+		List<IPLBatsman> iplBatsmanList = loadStats(batsmanFilePath, IPLBatsman.class);
+		List<IPLBowler> iplBowlerList = loadStats(bowlerFilePath, IPLBowler.class);
+
+		iplBatsmanList.stream().forEach(batsman -> {
+			IPLBowler bowlers = iplBowlerList.stream()
+					.filter(bowler -> bowler.getPlayer().equalsIgnoreCase(batsman.getPlayer())).findFirst()
+					.orElse(null);
+			if (bowlers != null) {
+				iplAllRounderList.add(new IPLAllRounder(batsman.getPlayer(), batsman.getRuns(), bowlers.getWickets(),
+						batsman.getAverage(), bowlers.getAverage()));
+			}
+		});
+		return iplAllRounderList;
 	}
 }

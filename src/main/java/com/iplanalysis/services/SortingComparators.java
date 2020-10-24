@@ -2,6 +2,7 @@ package com.iplanalysis.services;
 
 import java.util.Comparator;
 
+import com.iplanalysis.pojoclass.IPLAllRounder;
 import com.iplanalysis.pojoclass.IPLBatsman;
 import com.iplanalysis.pojoclass.IPLBowler;
 
@@ -34,4 +35,8 @@ public class SortingComparators {
 			.thenComparing(BEST_BOWLING_AVG);
 	public static final Comparator<IPLBowler> MAX_WKTS_WITH_BEST_BOWLING_AVG = Comparator
 			.comparing(IPLBowler::getWickets).reversed().thenComparing(BEST_BOWLING_AVG);
+
+	/* All-rounder data sorting comparators */
+	public static final Comparator<IPLAllRounder> BEST_BATTING_AND_BOWLING_AVG = Comparator
+			.comparing(IPLAllRounder::getPerformanceByAverage).reversed();
 }

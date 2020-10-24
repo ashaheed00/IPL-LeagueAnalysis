@@ -34,5 +34,12 @@ public class IPLAllrounderAnalyserTest {
 				SortingComparators.BEST_ALLROUNDER);
 		assertEquals("Hardik Pandya", sortedAllrounderList.get(0).getPlayer());
 	}
+	
+	@Test
+	public void givenIPLData_sortByMostHundredsAndBestAvg_ShouldReturnBatsmen() throws CSVException {
+		sortedAllrounderList = iplAnalyser.sortAllrounderData(IPL_BATTING_CSV_FILE_PATH, IPL_BOWLING_CSV_FILE_PATH,
+				SortingComparators.BEST_ALLROUNDER);
+		assertEquals("Hardik Pandya", sortedAllrounderList.get(0).getPlayer());
+	}
 
 }
